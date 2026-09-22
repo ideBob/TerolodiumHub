@@ -1,10 +1,10 @@
 local base = "https://raw.githubusercontent.com/ideBob/TerolodiumHub/main/"
 local parts = {}
-for i = 0, 2 do
+for i = 0, 3 do
 	local ok, body = pcall(function()
 		return game:HttpGet(base .. "chunk" .. i .. ".txt")
 	end)
-	if not ok or not body or body == "" then
+	if not ok or not body or #body < 10 then
 		error("Failed to load chunk" .. i)
 	end
 	table.insert(parts, body)
